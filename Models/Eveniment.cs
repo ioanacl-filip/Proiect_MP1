@@ -1,0 +1,31 @@
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Proiect_MP1.Models
+{
+    public class Eveniment
+    {
+        public int ID { get; set; }
+
+        [Required(ErrorMessage = "Adaugă numele evenimentului.")]
+        [StringLength(150, MinimumLength = 3, ErrorMessage = "Numele evenimentului trebuie să aibă între 3 și 150 de caractere.")]
+        [Display(Name = "Nume eveniment")]
+        public string Nume { get; set; }
+        public string Descriere { get; set; }
+
+        [Display(Name = "Locație")]
+        public string Locatie { get; set; }
+
+        [DataType(DataType.Date)]
+        [Display(Name = "Începe în")]
+        public DateTime DataInceput { get; set; }
+
+        [DataType(DataType.Date)]
+        [Display(Name = "Se termină în")]
+        public DateTime DataSfarsit { get; set; }
+
+        [Column(TypeName = "decimal(6, 2)")]
+        [Display(Name = "Preț bilet")]
+        public decimal Pret { get; set; }
+    }
+}
