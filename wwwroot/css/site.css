@@ -21,3 +21,7 @@ body {
     background-color: #B39D94;
     /*margin-bottom: 60px;*/
 }
+
+table {
+    border-color:#212529;
+}

@@ -243,8 +243,8 @@ svg {
 }
 
 table {
-  caption-side: bottom;
-  border-collapse: collapse;
+    border-color: #212529;
+    border-collapse: collapse;
 }
 
 caption {

@@ -67,3 +67,7 @@ button.accept-policy {
     color: white; /* Asigură că textul este alb */
 }
 
+table {
+    border-color:#212529;
+}
+
