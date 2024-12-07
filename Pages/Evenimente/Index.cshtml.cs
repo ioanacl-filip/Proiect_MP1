@@ -21,9 +21,28 @@ namespace Proiect_MP1.Pages.Evenimente
 
         public IList<Eveniment> Eveniment { get;set; } = default!;
 
-        public async Task OnGetAsync()
+        public EventData EventD { get; set; }
+        public int EventID { get; set; }
+        public int CategoryID { get; set; }
+        public async Task OnGetAsync(int? id, int? categoryID)
         {
-            Eveniment = await _context.Eveniment.ToListAsync();
+            EventD = new EventData();
+
+            //se va include Author conform cu sarcina de la lab 2
+            EventD.Evenimente = await _context.Eveniment
+            .Include(b => b.EventPlanner)
+            .Include(b => b.EventCategories)
+            .ThenInclude(b => b.Category)
+            .AsNoTracking()
+            .OrderBy(b => b.Nume)
+            .ToListAsync();
+            if (id != null)
+            {
+                EventID = id.Value;
+                Eveniment eveniment = EventD.Evenimente
+                .Where(i => i.ID == id.Value).Single();
+                EventD.Categories = eveniment.EventCategories.Select(s => s.Category);
+            }
         }
     }
 }

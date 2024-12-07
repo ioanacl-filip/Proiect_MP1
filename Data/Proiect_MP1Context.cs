@@ -15,5 +15,7 @@ namespace Proiect_MP1.Data
         }
 
         public DbSet<Proiect_MP1.Models.Eveniment> Eveniment { get; set; } = default!;
+        public DbSet<Proiect_MP1.Models.Category> Category { get; set; } = default!;
+        public DbSet<Proiect_MP1.Models.EventPlanner> EventPlanner { get; set; } = default!;
     }
 }

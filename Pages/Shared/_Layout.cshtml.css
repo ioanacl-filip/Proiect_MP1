@@ -1,73 +1,49 @@
-﻿/* Setăm fundalul paginii */
-body {
-    background-color: #B39D94;
-    margin-bottom: 60px;
-}
+﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
 
-/* Culoarea navbar-ului */
-.navbar .navbar-expand {
-    background-color: #635457;
-}
-
-/* Culoarea textului navbar-ului */
 a.navbar-brand {
-    background-color: #635457;
     white-space: normal;
     text-align: center;
     word-break: break-all;
-    color: white; /* Asigură că textul rămâne alb */
 }
 
-/* Culoare link-urilor din navbar */
-.a {
-    color: white; 
+a {
+    color: #0077cc;
 }
 
-/* Stilizarea butonului principal */
 .btn-primary {
     color: #fff;
     background-color: #1b6ec2;
     border-color: #1861ac;
 }
 
-/* Culoarea activă pentru nav pills */
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     color: #fff;
-    background-color: #635457;
+    background-color: #1b6ec2;
     border-color: #1861ac;
 }
 
-/* Stilizarea bordurii */
 .border-top {
-    border-top: 1px solid black;
+    border-top: 1px solid #e5e5e5;
 }
 
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
 
-
-/* Box shadow pentru elemente */
 .box-shadow {
     box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
-/* Stilizare buton acceptare policy */
 button.accept-policy {
     font-size: 1rem;
     line-height: inherit;
-    color:white;
 }
 
-/* Stilizarea footer-ului */
 .footer {
-    background-color: #635457;
     position: absolute;
     bottom: 0;
     width: 100%;
     white-space: nowrap;
-    line-height: 60px;
-    color: white; /* Asigură că textul este alb */
+    line-height:  60px;
 }
-
-table {
-    border-color:#212529;
-}
-

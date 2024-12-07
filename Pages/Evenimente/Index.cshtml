@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "/"
 @model Proiect_MP1.Pages.Evenimente.IndexModel
 
 @{
@@ -17,6 +17,9 @@
                 @Html.DisplayNameFor(model => model.Eveniment[0].Nume)
             </th>
             <th>
+                @Html.DisplayNameFor(model => Model.Eveniment[0].EventPlanner.EventPlannerName)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Eveniment[0].Descriere)
             </th>
             <th>
@@ -31,15 +34,27 @@
             <th>
                 @Html.DisplayNameFor(model => model.Eveniment[0].Pret)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Eveniment[0].EventCategories)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Eveniment) {
-        <tr>
+        @foreach (var item in Model.EventD.Evenimente)
+        {
+            string selectedRow = "";
+            if (item.ID == Model.EventID)
+            {
+                selectedRow = "table-success";
+            }
+            <tr class="@selectedRow">
             <td>
                 @Html.DisplayFor(modelItem => item.Nume)
             </td>
+             <td>
+                 @Html.DisplayFor(modelItem => item.EventPlanner.EventPlannerName)
+             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Descriere)
             </td>
@@ -55,11 +70,20 @@
              <td>
                 @Html.DisplayFor(modelItem => item.Pret)
              </td>
-            <td>
+            
+                <td>
+                    @{
+                        foreach (var category in item.EventCategories)
+                        {
+                            @category.Category.ID @: @category.Category.CategoryName <br />
+                        }
+                    }
+                </td>
+             <td>
                     <a asp-page="./Edit" asp-route-id="@item.ID" style="color:#212529">Editează</a> |
                     <a asp-page="./Details" asp-route-id="@item.ID" style="color:#212529">Detalii</a> |
                     <a asp-page="./Delete" asp-route-id="@item.ID" style="color:#212529">Șterge</a>
-            </td>
+             </td>
         </tr>
 }
     </tbody>

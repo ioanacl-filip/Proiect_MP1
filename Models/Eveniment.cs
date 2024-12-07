@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Security.Policy;
 
 namespace Proiect_MP1.Models
 {
@@ -27,5 +28,15 @@ namespace Proiect_MP1.Models
         [Column(TypeName = "decimal(6, 2)")]
         [Display(Name = "Preț bilet")]
         public decimal Pret { get; set; }
+
+        [Display(Name = "Categorie")]
+        public ICollection<EventCategory>? EventCategories { get; set; }
+
+        [Display(Name = "Organizator")]
+        public int? EventPlannerID { get; set; }
+        public EventPlanner? EventPlanner { get; set; }
+
+
     }
 }
+

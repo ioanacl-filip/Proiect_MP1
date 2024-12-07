@@ -10,7 +10,7 @@ using Proiect_MP1.Models;
 
 namespace Proiect_MP1.Pages.Evenimente
 {
-    public class CreateModel : PageModel
+    public class CreateModel : EventCategoriesPageModel
     {
         private readonly Proiect_MP1.Data.Proiect_MP1Context _context;
 
@@ -21,23 +21,34 @@ namespace Proiect_MP1.Pages.Evenimente
 
         public IActionResult OnGet()
         {
+            ViewData["EventPlannerID"] = new SelectList(_context.Set<EventPlanner>(), "ID", "EventPlannerName");
+            var eveniment = new Eveniment();
+            eveniment.EventCategories = new List<EventCategory>();
+            PopulateAssignedCategoryData(_context, eveniment);
             return Page();
         }
 
         [BindProperty]
         public Eveniment Eveniment { get; set; } = default!;
 
-        // For more information, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(string[] selectedCategories)
         {
-            if (!ModelState.IsValid)
+            var newEveniment = new Eveniment();
+            if (selectedCategories != null)
             {
-                return Page();
+                newEveniment.EventCategories = new List<EventCategory>();
+                foreach (var cat in selectedCategories)
+                {
+                    var catToAdd = new EventCategory
+                    {
+                        CategoryID = int.Parse(cat)
+                    };
+                    newEveniment.EventCategories.Add(catToAdd);
+                }
             }
-
+            Eveniment.EventCategories = newEveniment.EventCategories;
             _context.Eveniment.Add(Eveniment);
             await _context.SaveChangesAsync();
-
             return RedirectToPage("./Index");
         }
     }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proiect_MP1.Data;
 
@@ -11,9 +12,11 @@ using Proiect_MP1.Data;
 namespace Proiect_MP1.Migrations
 {
     [DbContext(typeof(Proiect_MP1Context))]
-    partial class Proiect_MP1ContextModelSnapshot : ModelSnapshot
+    [Migration("20241207132243_PlannerName")]
+    partial class PlannerName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proiect_MP1.Data;
 
@@ -11,9 +12,11 @@ using Proiect_MP1.Data;
 namespace Proiect_MP1.Migrations
 {
     [DbContext(typeof(Proiect_MP1Context))]
-    partial class Proiect_MP1ContextModelSnapshot : ModelSnapshot
+    [Migration("20241207125154_EventCategory")]
+    partial class EventCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,9 +60,6 @@ namespace Proiect_MP1.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("EventPlannerID")
-                        .HasColumnType("int");
-
                     b.Property<string>("Locatie")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -73,8 +73,6 @@ namespace Proiect_MP1.Migrations
                         .HasColumnType("decimal(6, 2)");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("EventPlannerID");
 
                     b.ToTable("Eveniment");
                 });
@@ -103,36 +101,6 @@ namespace Proiect_MP1.Migrations
                     b.HasIndex("EvenimentID");
 
                     b.ToTable("EventCategory");
-                });
-
-            modelBuilder.Entity("Proiect_MP1.Models.EventPlanner", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("EventPlanner");
-                });
-
-            modelBuilder.Entity("Proiect_MP1.Models.Eveniment", b =>
-                {
-                    b.HasOne("Proiect_MP1.Models.EventPlanner", "EventPlanner")
-                        .WithMany()
-                        .HasForeignKey("EventPlannerID");
-
-                    b.Navigation("EventPlanner");
                 });
 
             modelBuilder.Entity("Proiect_MP1.Models.EventCategory", b =>
