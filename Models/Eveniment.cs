@@ -18,11 +18,11 @@ namespace Proiect_MP1.Models
         public string Locatie { get; set; }
 
         [DataType(DataType.Date)]
-        [Display(Name = "Începe în")]
+        [Display(Name = "Începe")]
         public DateTime DataInceput { get; set; }
 
         [DataType(DataType.Date)]
-        [Display(Name = "Se termină în")]
+        [Display(Name = "Se termină")]
         public DateTime DataSfarsit { get; set; }
 
         [Column(TypeName = "decimal(6, 2)")]

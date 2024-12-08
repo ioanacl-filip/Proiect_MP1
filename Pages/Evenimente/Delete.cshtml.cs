@@ -29,7 +29,10 @@ namespace Proiect_MP1.Pages.Evenimente
                 return NotFound();
             }
 
-            var eveniment = await _context.Eveniment.FirstOrDefaultAsync(m => m.ID == id);
+            var eveniment = await _context.Eveniment
+                            .Include(b => b.EventPlanner)
+                            .Include(b => b.EventCategories).ThenInclude(bc => bc.Category)
+                            .FirstOrDefaultAsync(m => m.ID == id);
 
             if (eveniment == null)
             {
