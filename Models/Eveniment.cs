@@ -32,8 +32,8 @@ namespace Proiect_MP1.Models
         [Display(Name = "Categorie")]
         public ICollection<EventCategory>? EventCategories { get; set; }
 
-        [Display(Name = "Organizator")]
         public int? EventPlannerID { get; set; }
+        [Display(Name = "Organizator")]
         public EventPlanner? EventPlanner { get; set; }
 
 

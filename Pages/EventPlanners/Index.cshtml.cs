@@ -30,9 +30,10 @@ namespace Proiect_MP1.Pages.EventPlanners
         {
             EventPlannerData = new EventPlannerIndexData();
             EventPlannerData.EventPlanners = await _context.EventPlanner
-            .Include(i => i.Evenimente)
-            .OrderBy(i => i.EventPlannerName)
-            .ToListAsync();
+                .Include(i => i.Evenimente)
+                .OrderBy(i => i.LastName) 
+                .ThenBy(i => i.FirstName) 
+                .ToListAsync();
             if (id != null)
             {
                 EventPlannerID = id.Value;
