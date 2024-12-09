@@ -18,6 +18,12 @@
             @Html.DisplayFor(model => model.Eveniment.Nume)
         </dd>
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Eveniment.EventPlanner)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Eveniment.EventPlanner.FirstName)  @Html.DisplayFor(model => model.Eveniment.EventPlanner.LastName)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Eveniment.Pret)
         </dt>
         <dd class="col-sm-10">
