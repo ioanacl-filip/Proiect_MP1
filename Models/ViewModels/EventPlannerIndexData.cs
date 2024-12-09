@@ -7,6 +7,5 @@ namespace Proiect_MP1.Models.ViewModels
         public IEnumerable<EventPlanner> EventPlanners { get; set; }
         public IEnumerable<Eveniment> Evenimente { get; set; }
 
-
     }
 }

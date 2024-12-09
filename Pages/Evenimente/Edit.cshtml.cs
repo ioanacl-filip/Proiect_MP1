@@ -80,8 +80,6 @@ namespace Proiect_MP1.Pages.Evenimente
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");
             }
-            //Apelam UpdateBookCategories pentru a aplica informatiile din checkboxuri la entitatea Books care
-            //este editata
             UpdateEventCategories(_context, selectedCategories, eventToUpdate);
             PopulateAssignedCategoryData(_context, eventToUpdate);
             return Page();
